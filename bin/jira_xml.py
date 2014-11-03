@@ -44,6 +44,7 @@ try:
    password = local_conf.get('jira', 'password')
    protocol = local_conf.get('jira', 'jira_protocol')
    port = local_conf.get('jira', 'jira_port')
+   pathname = local_conf.get('jira', 'pathname')
 
    keywords, argvals = isp.getKeywordsAndOptions()
    logger.info('keywords: %s' % keywords)
@@ -74,8 +75,10 @@ try:
 
    while True:
       query = urllib.urlencode({'jqlQuery':jql, 'tempMax':count, 'pager/start':offset})
-
-      url = "%s://%s:%s/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?%s" % (protocol, hostname, port, query)
+      if pathname:
+         url = "%s://%s:%s/%s/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?%s" % (protocol, hostname, port, pathname, query)
+      else:
+         url = "%s://%s:%s/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?%s" % (protocol, hostname, port, query)
       request = urllib2.Request(url)
       logger.info(url)
 

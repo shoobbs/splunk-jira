@@ -28,7 +28,11 @@ authencode = base64.b64encode(auth)
 hostname = local_conf.get('jira', 'hostname')
 protocol = local_conf.get('jira', 'jira_protocol')
 port = local_conf.get('jira', 'jira_port')
-jiraserver = protocol + '://' + hostname + ':' + port
+pathname = local_conf.get('jira', 'pathname')
+if pathname:
+    jiraserver = protocol + '://' + hostname + ':' + port + '/' + pathname
+else:
+    jiraserver = protocol + '://' + hostname + ':' + port
 
 pattern = '%Y-%m-%dT%H:%M:%S'
 datepattern = "(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})"
