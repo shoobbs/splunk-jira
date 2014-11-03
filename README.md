@@ -163,7 +163,7 @@ It creates real events instead of a table, but the events are empty so far...
 
 1. Place the app into $SPLUNK_HOME/etc/apps/jira
 2. Create a folder named local, copy default/jira.conf into local, and update with configuration specific to your instance.
-3. Copy config.ini.sample to config.ini and update with your authentication credentials
+3. Copy config.ini.sample from default/config.ini.sample to local/config.ini and update with your authentication credentials
 
 Configure which keys to display in the table with the keys, time_keys, and custom_keys fields.
 
