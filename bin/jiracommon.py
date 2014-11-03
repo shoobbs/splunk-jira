@@ -16,8 +16,8 @@ def getSplunkConf():
 
 def getLocalConf():
    local_conf = ConfigParser.ConfigParser()
-   location = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-   local_conf.read(location + '/config.ini')
+   appBase,binPath = os.path.split(os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__))))
+   local_conf.read(appBase + '/local' + '/config.ini')
 
    return local_conf
 
